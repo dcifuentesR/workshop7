@@ -1,4 +1,5 @@
 
+
 ### Escuela Colombiana de Ingeniería
 
 ### Arquitecturas de Software
@@ -104,7 +105,7 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 
 3. Teniendo en cuenta el nombre del cine, la fecha y hora de la función y el nombre de la película, verifique que el mismo se pueda obtener mediante una petición GET al recurso '/cinemas/{name}/{date}/{moviename}' correspondiente.
 
-4. Agregue soporte al verbo PUT para los recursos de la forma '/cinemas/{name}/{date}/{moviename}/{row}/{col}, de manera que sea posible comprar un boleto de determinada función.
+4. Agregue soporte al verbo PUT para los recursos de la forma '/cinemas/{name}/{date}/{moviename}', de manera que sea posible actualizar una función determinada.
 
 
 ### Parte III
