@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.cinema.controllers;
 
+import edu.eci.arsw.cinema.model.Cinema;
 import edu.eci.arsw.cinema.persistence.CinemaException;
 import edu.eci.arsw.cinema.persistence.CinemaPersistenceException;
 import edu.eci.arsw.cinema.services.CinemaServices;
@@ -16,8 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 /**
  *
@@ -29,6 +32,8 @@ public class CinemaAPIController {
     @Autowired
     CinemaServices cs;
     
+    
+    //--------------------GET------------------------------------
     @RequestMapping(value="/cinemas",method = RequestMethod.GET)
     public ResponseEntity manejadorGetAllCinemas(){
         try {
@@ -52,5 +57,14 @@ public class CinemaAPIController {
     @RequestMapping(value = "cinemas/{name}/{date}",method = RequestMethod.GET)
     public ResponseEntity manejadorGetFunctionsByCinemaAndDate(@PathVariable("name") String name,@PathVariable("date") String date){
         return new ResponseEntity(cs.getFunctionsbyCinemaAndDate(name, date),HttpStatus.ACCEPTED);
+    }
+    
+    //-------------------------POST-------------------------------
+    @RequestMapping(value = "cinemas/{name}",method = RequestMethod.POST)
+    public ResponseEntity manejadorPostCinema(@RequestBody Cinema cinema){
+        
+        //---aqui se crea el cinema---
+        //--falta mandar excepciones si el cinema no es válido
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 }
