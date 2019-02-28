@@ -43,22 +43,22 @@ public class InMemoryCinemaPersistence implements CinemaPersitence{
         List<CinemaFunction> functions2= new ArrayList<>();
         CinemaFunction funct21 = new CinemaFunction(new Movie("Romantic comedy","Comedy"),functionDate2);
         CinemaFunction funct22 = new CinemaFunction(new Movie("The Night","Horror"),functionDate2);
-        functions.add(funct21);
-        functions.add(funct22);
+        functions2.add(funct21);
+        functions2.add(funct22);
         Cinema c2=new Cinema("cinemaXX",functions2);
         
         String functionDate3 = "2019-06-18 15:30";
         List<CinemaFunction> functions3= new ArrayList<>();
         CinemaFunction funct31 = new CinemaFunction(new Movie("Fifty Shades of Grey","Garbage"),functionDate3);
         CinemaFunction funct32 = new CinemaFunction(new Movie("Dead Poet Society","Drama"),functionDate3);
-        functions.add(funct31);
-        functions.add(funct32);
+        functions3.add(funct31);
+        functions3.add(funct32);
         Cinema c3=new Cinema("cinemaXXX",functions3);
         
         
         cinemas.put("cinemaX", c);
-        cinemas.put("cinemaX", c2);
-        cinemas.put("cinemaX", c3);
+        cinemas.put("cinemaXX", c2);
+        cinemas.put("cinemaXXX", c3);
     }    
 
     @Override
