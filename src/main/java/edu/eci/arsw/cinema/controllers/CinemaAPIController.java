@@ -6,6 +6,7 @@
 package edu.eci.arsw.cinema.controllers;
 
 import edu.eci.arsw.cinema.model.Cinema;
+import edu.eci.arsw.cinema.model.CinemaFunction;
 import edu.eci.arsw.cinema.persistence.CinemaException;
 import edu.eci.arsw.cinema.persistence.CinemaPersistenceException;
 import edu.eci.arsw.cinema.services.CinemaServices;
@@ -59,12 +60,28 @@ public class CinemaAPIController {
         return new ResponseEntity(cs.getFunctionsbyCinemaAndDate(name, date),HttpStatus.ACCEPTED);
     }
     
+    @RequestMapping(value = "cinemas/{name}/{date}/{moviename}",method = RequestMethod.GET)
+    public ResponseEntity manejadorGetFunction(@PathVariable("name") String name,@PathVariable("date") String date,@PathVariable("moviename") String movieName){
+        try {
+            return new ResponseEntity(cs.getFunction(name, date, movieName),HttpStatus.ACCEPTED);
+        } catch (CinemaPersistenceException ex) {
+            Logger.getLogger(CinemaAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity("No se encontro ningun cinema con el nombre: "+name,HttpStatus.NOT_FOUND);
+        }
+    }
+    
     //-------------------------POST-------------------------------
     @RequestMapping(value = "cinemas/{name}",method = RequestMethod.POST)
     public ResponseEntity manejadorPostCinema(@RequestBody Cinema cinema){
-        
-        //---aqui se crea el cinema---
         //--falta mandar excepciones si el cinema no es válido
+        cs.addNewCinema(cinema);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+    //-------------------------PUT---------------------------------
+    @RequestMapping(value = "cinemas/{name}", method =RequestMethod.PUT)
+    public ResponseEntity manejadorPutFuncion(@RequestBody CinemaFunction funcion){
+        
+        
         return new ResponseEntity(HttpStatus.CREATED);
     }
 }

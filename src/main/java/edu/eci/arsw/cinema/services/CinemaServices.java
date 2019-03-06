@@ -58,6 +58,10 @@ public class CinemaServices {
     public List<CinemaFunction> getFunctionsbyCinemaAndDate(String cinema, String date) {
         return cps.getFunctionsbyCinemaAndDate(cinema, date);
     }
+    
+    public CinemaFunction getFunction(String cinema,String date,String movieName)throws CinemaPersistenceException{
+        return cps.getFunction(cinema, date,movieName);
+    }
 
 
 }
