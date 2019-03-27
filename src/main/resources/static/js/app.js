@@ -4,15 +4,36 @@
  * and open the template in the editor.
  */
 var ControllerModule = (function(){
-    var getData = apimock.getCinemaByName("Cine80",function(error,name){
-        if(error){
-            return new Error("hubo un error")
-        }else{
-            //doThings
-        
-        }
+	
+	var selectedCinemaName;
+	var selectedCFunctions;
+    
 
-    },
+    };
+    
+    return{
+    	selectCinema:function(cinemaName){
+    		apimock.getCinemaByName(cinemaName,function(error,cinema){
+    	        if(error){
+    	            return new Error("hubo un error")
+    	        }else{
+    	            selectedCinemaName= cinema.name;
+    	            selectedCFunctions= cinema.functions;
+    	        
+    	        }
+    		}
+    	
+    	};
+    	
+    	updateCinemaFunctions:function(cinemaName){
+    		selectCinema(cinemaName);
+    		selectedCFunctions.map(function(){
+    			selectedCFunctions.seats.foreach()
+    			
+    		})
+    		
+    	};
+    }
 );
     
 })();
