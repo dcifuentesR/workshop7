@@ -8,6 +8,13 @@ var ControllerModule = (function(){
 	var selectedCinemaName;
 	var selectedCFunctions;
     
+	var getAvailableSeatsInRow = function(row,numSeats){
+		numSeats+=row.reduce(function(total,seat){
+			if(seat === true)
+				total+=1;
+			return total;
+		})
+	}
 
     };
     
@@ -27,10 +34,16 @@ var ControllerModule = (function(){
     	
     	updateCinemaFunctions:function(cinemaName){
     		selectCinema(cinemaName);
-    		selectedCFunctions.map(function(){
-    			selectedCFunctions.seats.foreach()
-    			
-    		})
+    		//----------------------Map to reduced Object----------------
+    		reducedFunctions = selectedCFunctions.map(function(func){
+					    			var reducedFunction={};
+					    			var numSeats=0;
+					    			reducedFunction["name"]=func.movie.name;
+					    			reducedFunction["seats"]=func.seats.foreach(getAvailableSeatsInRow(row,numSeats));
+					    			reducedFunction["date"]=func.date;
+					    			return reducedFunction;
+					    		});
+    		
     		
     	};
     }
