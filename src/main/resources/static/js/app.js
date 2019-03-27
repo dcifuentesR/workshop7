@@ -14,26 +14,22 @@ var ControllerModule = (function(){
 				total+=1;
 			return total;
 		})
-	}
-
-    };
+	};
     
     return{
     	selectCinema:function(cinemaName){
     		apimock.getCinemaByName(cinemaName,function(error,cinema){
-    	        if(error){
+    	        if(error)
     	            return new Error("hubo un error")
-    	        }else{
+    	        else{
     	            selectedCinemaName= cinema.name;
     	            selectedCFunctions= cinema.functions;
-    	        
-    	        }
-    		}
-    	
-    	};
+    	            }
+    		});
+    	},
     	
     	updateCinemaFunctions:function(cinemaName){
-    		var table= $(#Cinemas);
+    		var table= $("#Cinemas");
     		table.empty();
     		selectCinema(cinemaName);
     		//----------------------Map to reduced Object----------------
@@ -56,9 +52,8 @@ var ControllerModule = (function(){
     		
     		table.append();
     		
-    	};
-    }
-);
+    	}
+    };
     
 })();
 

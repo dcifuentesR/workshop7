@@ -18,8 +18,8 @@ and open the template in the editor.
     </head>
     <body>
         <div class="topnav">
-            <input type="text" placeholder="Search...">
-            <button type="submit" onClick="app.updateCinemaFunctions()">Search</button>
+            <input id="cinemaName" type="text" placeholder="Search...">
+            <button type="submit" onClick="app.updateCinemaFunctions($('cinemaName').val())">Search</button>
         </div>
         <table id="Cinemas">
             <tr>
